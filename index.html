@@ -570,7 +570,7 @@ section{position:relative;}
   gap:18px;
 }
 .presence-grid figure{margin:0; overflow:hidden; position:relative;}
-.presence-grid img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .8s var(--ease);}
+.presence-grid img{width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .8s var(--ease);}
 .presence-grid figure:hover img{transform:scale(1.045);}
 .p-tall{grid-row:span 2; aspect-ratio:3/4.3;}
 .p-short{aspect-ratio:1/1;}
@@ -581,7 +581,7 @@ section{position:relative;}
 }
 @media (max-width:560px){
   .presence-grid{grid-template-columns:1fr;}
-  .p-tall{grid-row:auto; aspect-ratio:4/5;}
+  .p-tall{grid-row:auto; aspect-ratio:4/5;} .p-short{aspect-ratio:4/5;}
 }
 
 /* ================= PROCEDURES ================= */
@@ -1494,13 +1494,13 @@ function swapProcImage(item){
 procImg.style.transition = 'opacity .3s var(--ease)';
 procItems.forEach(item => {
   item.addEventListener('click', () => {
-    procItems.forEach(i => i.classList.remove('active'));
-    item.classList.add('active');
-    swapProcImage(item);
+    const alreadyActive = item.classList.contains('active'); procItems.forEach(i => i.classList.remove('active'));
+    if (!alreadyActive) { item.classList.add('active'); swapProcImage(item); }
+
   });
   item.addEventListener('mouseenter', () => {
-    if (window.matchMedia('(hover:hover)').matches){
-      swapProcImage(item);
+    if (window.matchMedia('(hover:hover)').matches){ swapProcImage(item);
+  
     }
   });
 });
