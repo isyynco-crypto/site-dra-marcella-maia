@@ -501,20 +501,6 @@ section{position:relative;}
   border:1px solid var(--rose-burnt);
   z-index:-1;
 }
-.about-media-accent{
-  position:absolute;
-  width:44%;
-  top:-13%;
-  right:-15%;
-  aspect-ratio:4/5;
-  border:6px solid var(--off-white);
-  box-shadow:0 20px 50px rgba(37,33,36,0.18);
-  z-index:2;
-}
-.about-media-accent img{width:100%; height:100%; object-fit:cover; object-position:top;}
-@media (max-width:860px){
-  .about-media-accent{width:34%; right:-6%; top:-8%;}
-}
 .about-copy .credential{
   font-size:14px;
   color:var(--rose-burnt);
@@ -565,23 +551,23 @@ section{position:relative;}
 .presence-head p{margin-top:18px; font-size:15px; color:var(--graphite); opacity:0.75; max-width:440px;}
 .presence-grid{
   display:grid;
-  grid-template-columns:1.15fr 0.85fr 0.85fr;
-  grid-template-rows:auto auto;
-  gap:18px;
+  grid-template-columns:1.1fr 0.9fr;
+  align-items:end;
+  gap:22px;
 }
 .presence-grid figure{margin:0; overflow:hidden; position:relative;}
 .presence-grid img{width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .8s var(--ease);}
 .presence-grid figure:hover img{transform:scale(1.045);}
-.p-tall{grid-row:span 2; aspect-ratio:3/4.3;}
-.p-short{aspect-ratio:1/1;}
+.p-tall{aspect-ratio:3/3.6;}
+.p-short{aspect-ratio:3/3.05;}
 @media (max-width:860px){
-  .presence-grid{grid-template-columns:1fr 1fr; grid-template-rows:auto;}
-  .p-tall{grid-row:span 2; aspect-ratio:3/4;}
-  .p-short{aspect-ratio:1/1;}
+  .presence-grid{grid-template-columns:1fr 1fr; gap:14px;}
+  .p-tall{aspect-ratio:3/4;}
+  .p-short{aspect-ratio:3/3.4;}
 }
 @media (max-width:560px){
   .presence-grid{grid-template-columns:1fr;}
-  .p-tall{grid-row:auto; aspect-ratio:4/5;} .p-short{aspect-ratio:4/5;}
+  .p-tall{aspect-ratio:4/5;} .p-short{aspect-ratio:4/5;}
 }
 
 /* ================= PROCEDURES ================= */
@@ -674,33 +660,73 @@ section{position:relative;}
   aspect-ratio:3/4;
   overflow:hidden;
   border:1px solid var(--line-on-bordo);
+  background:linear-gradient(165deg, rgba(250,249,247,0.07), rgba(250,249,247,0.015));
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:32px;
 }
-.proc-media img{
-  width:100%;height:100%;object-fit:cover;object-position:top;
-  transition:filter .6s var(--ease), transform 8s linear;
-  filter:saturate(0.85) brightness(0.96);
-}
-.proc-media::after{
+.proc-media::before{
   content:'';
   position:absolute; inset:0;
-  background:var(--tint, rgba(90,31,43,0));
-  mix-blend-mode:multiply;
-  transition:background .5s var(--ease);
+  background:radial-gradient(85% 65% at 50% 32%, var(--tint, rgba(233,160,157,0.26)), transparent 72%);
+  transition:background .6s var(--ease);
+  pointer-events:none;
+}
+.proc-media-glyph{
+  position:absolute;
+  top:42%; left:50%;
+  width:112%;
+  transform:translate(-50%,-50%);
+  opacity:0.08;
+  filter:brightness(0) invert(1);
+  pointer-events:none;
+}
+.proc-media-inner{
+  position:relative;
+  z-index:2;
+  transition:opacity .3s var(--ease);
+}
+.proc-media-idx{
+  display:block;
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:15px;
+  color:var(--rose-light);
+  margin-bottom:12px;
 }
 .proc-media-label{
-  position:absolute;
-  left:20px; bottom:20px;
+  display:block;
   color:var(--off-white);
   font-family:var(--serif);
   font-style:italic;
-  font-size:20px;
+  font-size:clamp(25px,2.5vw,32px);
+  line-height:1.12;
+}
+.proc-media-note{
+  margin-top:14px;
+  font-size:14px;
+  line-height:1.65;
+  color:rgba(250,249,247,0.68);
+}
+.proc-media-foot{
+  position:relative;
   z-index:2;
-  transition:opacity .4s var(--ease);
+  margin-top:26px;
+  padding-top:16px;
+  border-top:1px solid var(--line-on-bordo);
+  font-size:10.5px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(250,249,247,0.45);
 }
 
 @media (max-width:900px){
   .proc-layout{grid-template-columns:1fr;}
-  .proc-media{position:relative; top:0; aspect-ratio:4/5; order:-1; margin-bottom:20px;}
+  .proc-layout{gap:38px;}
+  .proc-media{position:relative; top:0; aspect-ratio:auto; min-height:210px; order:-1; margin-bottom:0; padding:26px;}
+  .proc-media-glyph{width:62%; top:50%; left:auto; right:-8%; transform:translate(0,-50%);}
+  .proc-media-foot{font-size:9.5px; letter-spacing:0.1em; margin-top:20px;}
   .procedures-head{flex-direction:column; align-items:flex-start; gap:16px;}
 }
 
@@ -882,8 +908,8 @@ section{position:relative;}
 .insta-head .handle{color:var(--rose-burnt); font-family:var(--serif); font-style:italic; font-size:19px;}
 .insta-grid{
   display:grid;
-  grid-template-columns:repeat(6,1fr);
-  gap:10px;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
 }
 .insta-tile{
   position:relative;
@@ -909,7 +935,7 @@ section{position:relative;}
 }
 .insta-tile:hover .insta-hover{opacity:1;}
 .insta-hover svg{width:24px;height:24px;}
-@media (max-width:760px){.insta-grid{grid-template-columns:repeat(3,1fr);}}
+@media (max-width:760px){.insta-grid{grid-template-columns:repeat(3,1fr); gap:8px;}}
 
 /* ================= FINAL CTA ================= */
 .final-cta{
@@ -1079,10 +1105,7 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
   <div class="wrap about-grid">
     <div class="about-media reveal">
       <div class="about-media-frame"></div>
-      <img src="about.jpeg" alt="Retrato da Dra. Marcella Maia">
-      <div class="about-media-accent">
-        <img src="lace-portrait2.jpeg" alt="Dra. Marcella Maia">
-      </div>
+      <img src="about.jpeg" alt="Retrato da Dra. Marcella Maia" loading="lazy">
     </div>
     <div class="about-copy">
       <div class="kicker reveal">
@@ -1113,16 +1136,10 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
     </div>
     <div class="presence-grid reveal reveal-delay-1">
       <figure class="p-tall">
-        <img src="lace-chair.jpeg" alt="Dra. Marcella Maia">
+        <img src="office-1.jpeg" alt="Dra. Marcella Maia em seu consultório" loading="lazy">
       </figure>
       <figure class="p-short">
-        <img src="ipad-sitting.jpeg" alt="Dra. Marcella Maia">
-      </figure>
-      <figure class="p-tall">
-        <img src="radiesse-full.jpeg" alt="Dra. Marcella Maia">
-      </figure>
-      <figure class="p-short">
-        <img src="pink-portrait1.jpeg" alt="Dra. Marcella Maia">
+        <img src="lace-chair.jpeg" alt="Dra. Marcella Maia" loading="lazy">
       </figure>
     </div>
   </div>
@@ -1140,7 +1157,7 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
     </div>
     <div class="proc-layout">
       <div class="proc-list reveal">
-        <div class="proc-item active" data-tint="rgba(90,31,43,0.28)" data-label="Bioestimulador" data-img="pennova.jpeg">
+        <div class="proc-item active" data-tint="rgba(233,160,157,0.26)" data-label="Bioestimulador" data-idx="01" data-note="Firmeza e qualidade de pele pelo estímulo natural de colágeno.">
           <div class="proc-item-top">
             <span class="idx">01</span>
             <h3>Bioestimulador de Colágeno</h3>
@@ -1148,7 +1165,7 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
           </div>
           <div class="proc-item-body"><p>Procedimento voltado ao estímulo de colágeno e à melhora da qualidade e firmeza da pele.</p></div>
         </div>
-        <div class="proc-item" data-tint="rgba(184,109,107,0.32)" data-label="Botox" data-img="syringes-lace.jpeg">
+        <div class="proc-item" data-tint="rgba(184,109,107,0.32)" data-label="Botox" data-idx="02" data-note="Linhas de expressão suavizadas, com um olhar mais descansado.">
           <div class="proc-item-top">
             <span class="idx">02</span>
             <h3>Botox</h3>
@@ -1156,7 +1173,7 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
           </div>
           <div class="proc-item-body"><p>Procedimento utilizado para suavizar linhas de expressão e proporcionar uma aparência mais descansada.</p></div>
         </div>
-        <div class="proc-item" data-tint="rgba(233,160,157,0.34)" data-label="Preenchimento" data-img="radiesse-bust.jpeg">
+        <div class="proc-item" data-tint="rgba(233,160,157,0.36)" data-label="Preenchimento" data-idx="03" data-note="Proporções harmonizadas e contornos valorizados com naturalidade.">
           <div class="proc-item-top">
             <span class="idx">03</span>
             <h3>Preenchimento Facial</h3>
@@ -1164,7 +1181,7 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
           </div>
           <div class="proc-item-body"><p>Técnica utilizada para harmonizar proporções e valorizar contornos faciais.</p></div>
         </div>
-        <div class="proc-item" data-tint="rgba(90,31,43,0.22)" data-label="Microagulhamento" data-img="lace-portrait1.jpeg">
+        <div class="proc-item" data-tint="rgba(212,140,138,0.24)" data-label="Microagulhamento" data-idx="04" data-note="Renovação da pele, com textura e viço mais uniformes.">
           <div class="proc-item-top">
             <span class="idx">04</span>
             <h3>Microagulhamento</h3>
@@ -1172,7 +1189,7 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
           </div>
           <div class="proc-item-body"><p>Procedimento voltado à renovação e melhora da qualidade da pele.</p></div>
         </div>
-        <div class="proc-item" data-tint="rgba(184,109,107,0.24)" data-label="Peptídeos" data-img="office-2.jpeg">
+        <div class="proc-item" data-tint="rgba(184,109,107,0.20)" data-label="Peptídeos" data-idx="05" data-note="Cuidado contínuo com a saúde e a qualidade da pele.">
           <div class="proc-item-top">
             <span class="idx">05</span>
             <h3>Peptídeos</h3>
@@ -1180,7 +1197,7 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
           </div>
           <div class="proc-item-body"><p>Tratamentos voltados ao cuidado e à qualidade da pele.</p></div>
         </div>
-        <div class="proc-item" data-tint="rgba(90,31,43,0.3)" data-label="Fios de PDO" data-img="procedures.jpeg">
+        <div class="proc-item" data-tint="rgba(233,160,157,0.18)" data-label="Fios de PDO" data-idx="06" data-note="Suporte e contorno facial com estímulo de colágeno.">
           <div class="proc-item-top">
             <span class="idx">06</span>
             <h3>Fios de PDO</h3>
@@ -1189,10 +1206,15 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
           <div class="proc-item-body"><p>Técnica utilizada para estímulo de colágeno e melhora do suporte e contorno facial.</p></div>
         </div>
       </div>
-      <div class="proc-media reveal reveal-delay-2">
-        <img src="pennova.jpeg" alt="Dra. Marcella Maia em atendimento" id="proc-img">
-        <span class="proc-media-label" id="proc-label">Bioestimulador</span>
-      </div>
+      <aside class="proc-media reveal reveal-delay-2" aria-live="polite">
+        <img src="m-glyph.png" class="proc-media-glyph" alt="" aria-hidden="true">
+        <div class="proc-media-inner" id="proc-media-inner">
+          <span class="proc-media-idx" id="proc-idx">01</span>
+          <span class="proc-media-label" id="proc-label">Bioestimulador de Colágeno</span>
+          <p class="proc-media-note" id="proc-note">Firmeza e qualidade de pele pelo estímulo natural de colágeno.</p>
+        </div>
+        <span class="proc-media-foot">Avaliação individualizada · CRO-TO 1729</span>
+      </aside>
     </div>
   </div>
 </section>
@@ -1351,27 +1373,15 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
     </div>
     <div class="insta-grid reveal reveal-delay-1">
       <a class="insta-tile" href="https://instagram.com/dramarcellamaiaa" target="_blank" rel="noopener" aria-label="Ver no Instagram">
-        <img src="office-1.jpeg" alt="Dra. Marcella Maia no Instagram">
+        <img src="pink-portrait2.jpeg" alt="Dra. Marcella Maia no Instagram" loading="lazy">
         <span class="insta-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg></span>
       </a>
       <a class="insta-tile" href="https://instagram.com/dramarcellamaiaa" target="_blank" rel="noopener" aria-label="Ver no Instagram">
-        <img src="ipad-standing.jpeg" alt="Dra. Marcella Maia no Instagram">
+        <img src="ipad-standing.jpeg" alt="Dra. Marcella Maia no Instagram" loading="lazy">
         <span class="insta-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg></span>
       </a>
       <a class="insta-tile" href="https://instagram.com/dramarcellamaiaa" target="_blank" rel="noopener" aria-label="Ver no Instagram">
-        <img src="pink-chair2.jpeg" alt="Dra. Marcella Maia no Instagram">
-        <span class="insta-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg></span>
-      </a>
-      <a class="insta-tile" href="https://instagram.com/dramarcellamaiaa" target="_blank" rel="noopener" aria-label="Ver no Instagram">
-        <img src="pink-portrait2.jpeg" alt="Dra. Marcella Maia no Instagram">
-        <span class="insta-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg></span>
-      </a>
-      <a class="insta-tile" href="https://instagram.com/dramarcellamaiaa" target="_blank" rel="noopener" aria-label="Ver no Instagram">
-        <img src="lace-chair.jpeg" alt="Dra. Marcella Maia no Instagram">
-        <span class="insta-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg></span>
-      </a>
-      <a class="insta-tile" href="https://instagram.com/dramarcellamaiaa" target="_blank" rel="noopener" aria-label="Ver no Instagram">
-        <img src="pink-portrait1.jpeg" alt="Dra. Marcella Maia no Instagram">
+        <img src="lace-portrait2.jpeg" alt="Dra. Marcella Maia no Instagram" loading="lazy">
         <span class="insta-hover"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg></span>
       </a>
     </div>
@@ -1477,29 +1487,31 @@ revealEls.forEach(el => io.observe(el));
 
 /* Procedures interactive list */
 const procItems = document.querySelectorAll('.proc-item');
-const procImg = document.getElementById('proc-img');
-const procLabel = document.getElementById('proc-label');
 const procMedia = document.querySelector('.proc-media');
-function swapProcImage(item){
+const procInner = document.getElementById('proc-media-inner');
+const procIdx = document.getElementById('proc-idx');
+const procLabel = document.getElementById('proc-label');
+const procNote = document.getElementById('proc-note');
+let procTimer;
+function swapProcMedia(item){
   procMedia.style.setProperty('--tint', item.dataset.tint);
-  procImg.style.opacity = 0;
-  procLabel.style.opacity = 0;
-  setTimeout(() => {
-    if (item.dataset.img) procImg.src = item.dataset.img;
-    procLabel.textContent = item.dataset.label;
-    procImg.style.opacity = 1;
-    procLabel.style.opacity = 1;
-  }, 220);
+  procInner.style.opacity = 0;
+  clearTimeout(procTimer);
+  procTimer = setTimeout(() => {
+    procIdx.textContent = item.dataset.idx || '';
+    procLabel.textContent = item.querySelector('h3').textContent;
+    procNote.textContent = item.dataset.note || '';
+    procInner.style.opacity = 1;
+  }, 200);
 }
-procImg.style.transition = 'opacity .3s var(--ease)';
 procItems.forEach(item => {
   item.addEventListener('click', () => {
     const alreadyActive = item.classList.contains('active'); procItems.forEach(i => i.classList.remove('active'));
-    if (!alreadyActive) { item.classList.add('active'); swapProcImage(item); }
+    if (!alreadyActive) { item.classList.add('active'); swapProcMedia(item); }
 
   });
   item.addEventListener('mouseenter', () => {
-    if (window.matchMedia('(hover:hover)').matches){ swapProcImage(item);
+    if (window.matchMedia('(hover:hover)').matches){ swapProcMedia(item);
   
     }
   });
