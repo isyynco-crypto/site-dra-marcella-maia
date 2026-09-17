@@ -700,7 +700,7 @@ section{position:relative;}
 
 @media (max-width:900px){
   .proc-layout{grid-template-columns:1fr;}
-  .proc-media{position:relative; top:0; aspect-ratio:16/10; order:-1; margin-bottom:20px;}
+  .proc-media{position:relative; top:0; aspect-ratio:4/5; order:-1; margin-bottom:20px;}
   .procedures-head{flex-direction:column; align-items:flex-start; gap:16px;}
 }
 
@@ -788,7 +788,7 @@ section{position:relative;}
   font-style:italic;
   max-width:520px;
 }
-@media (max-width:760px){.results-grid{grid-template-columns:repeat(2,1fr);}}
+.result-photo{position:relative;aspect-ratio:3/4;overflow:hidden;border:1px solid var(--line);} .result-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .7s var(--ease);} .result-photo:hover img{transform:scale(1.035);} @media (max-width:760px){.results-grid{grid-template-columns:repeat(2,1fr);}}
 
 /* ================= EXPERIENCE JOURNEY ================= */
 .journey{background:var(--bordo); color:var(--off-white);}
@@ -1236,17 +1236,17 @@ footer{background:var(--graphite); color:rgba(250,249,247,0.75); padding:80px 0 
       <h2 class="reveal">Resultados</h2>
     </div>
     <div class="results-grid reveal reveal-delay-1">
-      <div class="result-slot">
-        <span class="ico">＋</span>
-        <span>Espaço reservado para fotografia de resultado</span>
+      <div class="result-photo"><img src="result-1.jpeg" alt="Resultado de preenchimento labial — antes e depois">
+        
+        
       </div>
-      <div class="result-slot">
-        <span class="ico">＋</span>
-        <span>Espaço reservado para fotografia de resultado</span>
+      <div class="result-photo"><img src="result-3.jpeg" alt="Resultado de preenchimento labial — antes e depois">
+        
+        
       </div>
-      <div class="result-slot">
-        <span class="ico">＋</span>
-        <span>Espaço reservado para fotografia de resultado</span>
+      <div class="result-photo"><img src="result-2.jpeg" alt="Resultado de harmonização facial — antes e depois">
+        
+        
       </div>
     </div>
     <p class="results-note reveal reveal-delay-2">Os resultados podem variar de acordo com as características individuais de cada paciente.</p>
